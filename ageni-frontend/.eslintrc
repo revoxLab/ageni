@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+  },
+  "extends": [
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/eslint-config-typescript",
+    "@vue/eslint-config-prettier/skip-formatting",
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "indent": "off",
+    "linebreak-style": ["error", "unix", "windows"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "@typescript-eslint/no-non-null-assertion": ["off"],
+    "@typescript-eslint/no-extra-semi": "off",
+    "@typescript-eslint/no-empty-function": "off",
+  },
+}

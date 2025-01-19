@@ -1,0 +1,27 @@
+env="dev"
+openai_key=""
+
+bot_tabs=["Most used", "News", "Web3", "Search", "Meme", "Entertainment"]
+plugin_tabs=["Most used", "Efficiency Tools", "Web3", "Entertainment", "Game", "Lifestyle", "Education"]
+
+[log]
+appName ="studio-service"
+
+[http_server]
+addr=":8080"
+readTimeout="1m"
+writeTimeout="1m"
+
+[studio_db]
+debug_mode=true
+driver_name="mysql"
+dsn="root:@(127.0.0.1:3306)/studio?charset=utf8mb4&parseTime=True&loc=Local"
+max_idle_conns=100
+max_open_conns=100
+max_lifetime="60s"
+max_idle_time="60s"
+
+[jwt_token]
+secretKey="{jwt_secret_key}"
+expire=2592000
+

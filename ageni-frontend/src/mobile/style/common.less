@@ -1,0 +1,32 @@
+.generate(@baseName, @property, @unit, @i, @max) when (@i =< @max) {
+  .generate(@baseName, @property, @unit, @i + 1, @max);
+  .@{baseName}@{i} {
+    @{property}: @i * @unit;
+  }
+}
+
+.generate2(@baseName, @p1, @p2, @unit, @i, @max) when (@i =< @max) {
+  .generate2(@baseName, @p1, @p2, @unit, @i + 1, @max);
+  .@{baseName}@{i} {
+    @{p1}: @i * @unit;
+    @{p2}: @i * @unit;
+  }
+}
+
+.generate(m, margin, 1px, -20, 100);
+.generate(ml, margin-left, 1px, -20, 100);
+.generate(mr, margin-right, 1px, -20, 100);
+.generate(mt, margin-top, 1px, -20, 100);
+.generate(mb, margin-bottom, 1px, -20, 100);
+.generate2(mx, margin-left, margin-right, 1px, -20, 100);
+.generate2(my, margin-top, margin-bottom, 1px, -20, 100);
+.generate(p, padding, 1px, 0, 100);
+.generate(pl, padding-left, 1px, 0, 100);
+.generate(pr, padding-right, 1px, 0, 100);
+.generate(pt, padding-top, 1px, 0, 100);
+.generate(pb, padding-bottom, 1px, 0, 100);
+.generate2(px, padding-left, padding-right, 1px, 0, 100);
+.generate2(py, padding-top, padding-bottom, 1px, 0, 100);
+.generate(br, border-radius, 1px, 0, 100);
+.generate(f, font-size, 1px, 0, 100);
+.generate(g, gap, 1px, 0, 100);
