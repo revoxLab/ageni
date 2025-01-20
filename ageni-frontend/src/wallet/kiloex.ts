@@ -7,15 +7,11 @@ let kiloClient: ReturnType<typeof create>
 
 setTimeout(() => {
   try {
-    kiloClient = create(currentChainId)
+    kiloClient = create(currentChainId, {brokerId: 20})
   } catch {}
 })
 
 export function supportChainsOnKiloex() {
-  return supportChains()
-}
-
-function supportChains() {
   const result = []
   const chains = supportedChains()
   for (const chain of chains) {
@@ -56,10 +52,10 @@ async function switchChain() {
   const chainId = await getChainId()
   if (chainId == null) return
   if (currentChainId !== chainId) {
-    const chains = supportChains()
+    const chains = supportChainsOnKiloex()
     for (const chain of chains) {
       if (chain.chainId === chainId) {
-        kiloClient = create(chainId)
+        kiloClient = create(chainId, {brokerId: 20})
         currentChainId = chainId
         break
       }
@@ -76,7 +72,6 @@ export async function increasePositionOnKiloex({
   leverage: number
   isLong: boolean
   margin: number
-  point: number
   tickerPrice: string
   stopLessPrice?: number
   takeProfitPrice?: number
@@ -89,11 +84,10 @@ export async function increasePositionOnKiloex({
     position,
     openType,
   })
-  const res = await kiloClient.increasePosition(
-    address as Address,
-    openType,
-    position
-  )
+  const res = await kiloClient.increasePosition(address as Address, openType, {
+    ...position,
+    point: 0.01,
+  })
   return {txHash: res.transactionHash}
 }
 
